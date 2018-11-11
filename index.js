@@ -1,10 +1,10 @@
-let fun = function() {
+let fun = () => {
   let articles = [];
   let insertArticles = [];
   let container = document.querySelector('#content');
   let chanel = 'sources=' + document.querySelector('#chanel').value + '&';
   let amount = 'pageSize=' + document.querySelector('#amount').value + '&';
-  const url = 'https://newsapi.org/v2/everything?'
+  let url = 'https://newsapi.org/v2/everything?'
     + chanel + 'sortBy=publishedAt&'
     + amount + 'language=en&' + 'apiKey=50e7f6495b2b43a9a2cff93bcd0399da';
 
@@ -12,14 +12,13 @@ let fun = function() {
   function* getArticles() {
     let urlFetch = yield fetch(url);
     let urlPromise = yield urlFetch.json();
-    console.log(urlPromise);
 
     articles = urlPromise.articles;
     insertArticles = articles.map( art => {
       return `<div class="item-wrapper">
       <div class="item-header">
         <div class="image">
-          <img src="${art.urlToImage}" alt="article image">
+          <img src="${art.urlToImage ? art.urlToImage : 'noimage.jpg'}" alt="article image">
         </div>
         <div class="item-utility">
           <p class="chanel">News chanel: <span>${art.source.name}</span></p>
@@ -38,12 +37,10 @@ let fun = function() {
     } );
     container.innerHTML = insertArticles.join('');
     
-  
     return insertArticles;
   }
 
-  function execute(generator, yieldValue) {
-
+  let execute = (generator, yieldValue) => {
     let next = generator.next(yieldValue);
   
     if (!next.done) {
@@ -57,5 +54,5 @@ let fun = function() {
   execute( getArticles() );
 }
 
-const search = document.querySelector('#search');
+let search = document.querySelector('#search');
 search.addEventListener('click', fun);
