@@ -5,4 +5,8 @@ In the second field you can choose amount of articles ( min = 1 and max = 20 ).
 Fully adaptive design (including iphone5, iphone6 etc).
 If there is no image, unknown author or no description you will see appropriate message.
 
-NOTE: When you open the site and type for the first time you probably won't get any results. It works with the second try. Dunno why.
+Fields aren't required:
+
+default value for chanel field: cnn
+
+default value for amount field: 10
