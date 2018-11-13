@@ -6,5 +6,7 @@ Fully adaptive design (including iphone5, iphone6 etc).
 If there is no image, unknown author or no description you will see appropriate message.
 
 Fields aren't required:
+
 default value for chanel field: cnn
+
 default value for amount field: 10
