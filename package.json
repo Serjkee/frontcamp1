@@ -1,0 +1,36 @@
+{
+  "name": "frontcamp1",
+  "version": "1.0.0",
+  "description": "Type any news chanel in the first field ( for test you can use chanels like \"cnn\", \"mirror\" ). If you enter any non-existing chanel, you won't get any error but the last published articles ( not a bug but feature ).\r In the second field you can choose amount of articles ( min = 1 and max = 20 ).\r Fully adaptive design (including iphone5, iphone6 etc).\r If there is no image, unknown author or no description you will see appropriate message.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Serjkee/frontcamp1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Serjkee/frontcamp1/issues"
+  },
+  "homepage": "https://github.com/Serjkee/frontcamp1#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-transform-regenerator": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "babel-loader": "^8.0.4",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "@babel/runtime": "^7.1.5"
+  }
+}

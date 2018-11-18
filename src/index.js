@@ -1,11 +1,11 @@
-let articles = [];
-let insertArticles = [];
 let container = document.querySelector('#content');
-let chanel = `sources=${document.querySelector('#chanel').value ? document.querySelector('#chanel').value : 'cnn'}&`;
-let amount = `pageSize=${document.querySelector('#amount').value ? document.querySelector('#amount').value : 10}&`;
-let url = `https://newsapi.org/v2/everything?${chanel}sortBy=publishedAt&${amount}language=en&apiKey=50e7f6495b2b43a9a2cff93bcd0399da`;
 
 function* getArticles() {
+  let articles = [];
+  let insertArticles = [];
+  let chanel = `sources=${document.querySelector('#chanel').value ? document.querySelector('#chanel').value : 'cnn'}&`;
+  let amount = `pageSize=${document.querySelector('#amount').value ? document.querySelector('#amount').value : 10}&`;
+  let url = `https://newsapi.org/v2/everything?${chanel}sortBy=publishedAt&${amount}language=en&apiKey=50e7f6495b2b43a9a2cff93bcd0399da`;
   let urlFetch = yield fetch(url);
   let urlPromise = yield urlFetch.json();
 
@@ -47,7 +47,8 @@ let execute = (generator, yieldValue) => {
   }
 }
 
-let searchArticles = () => {
+let submitButton = document.querySelector('#search');
+submitButton.addEventListener('click', (event) => {
   event.preventDefault();
   execute( getArticles() );
-}
+});
