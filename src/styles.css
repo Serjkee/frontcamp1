@@ -1,6 +1,11 @@
 html * {
   box-sizing: border-box;
 }
+
+html {
+  height: 100%;
+}
+
 .slide img {
   width: 100%;
   height: auto;
@@ -201,5 +206,14 @@ label {
   }
   .content {
     justify-content: space-between;
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+  .item-wrapper,
+  .item-wrapper .item-header,
+  .item-wrapper .item-content,
+  .item-wrapper .item-footer {
+    height: 100%;
   }
 }

@@ -1,3 +1,5 @@
+import 'promise-polyfill/src/polyfill';
+
 let container = document.querySelector('#content');
 
 function* getArticles() {
