@@ -1,4 +1,8 @@
 import 'promise-polyfill/src/polyfill';
+import './styles.scss';
+
+import './news-image.jpg';
+import './noimage.jpg';
 
 let container = document.querySelector('#content');
 
