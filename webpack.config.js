@@ -1,16 +1,21 @@
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const argv = require('yargs').argv;
+const HWP = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const isDevelopment = argv.mode === 'development';
+const isProduction = !isDevelopment;
 
 module.exports = {
   entry: ['whatwg-fetch', './src/index.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    filename: 'index.js',
+    chunkFilename: '[name].chunk.js'
   },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist'
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
   },
   module: {
     rules: [{
@@ -21,54 +26,48 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
-        use: [{
-            loader: process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              modules: true,
-              localIdentName: '[name]__[local]__[hash:base64:5]'
-            }
-          },
-          {
-            loader: 'sass-loader'
-          }
-        ]
-      },
-      {
         test: /\.html$/,
+        use: [{
+          loader: "html-loader"
+        }]
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
         use: [
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
           {
-            loader: "html-loader"
-          }
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                isProduction ? require('cssnano') : () => {},
+                require('autoprefixer')({
+                  browsers: ['last 2 versions']
+                })
+              ]
+            }
+          },
+          'sass-loader'
         ]
       },
       {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {}
-          },
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192
-            }
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]'
           }
-        ]
+        }]
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     }),
-    new HtmlWebpackPlugin({
+    new HWP({
       template: "./src/index.html",
       filename: "./index.html"
     })
