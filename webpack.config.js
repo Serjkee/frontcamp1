@@ -2,11 +2,12 @@ const path = require('path');
 const argv = require('yargs').argv;
 const HWP = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const isDevelopment = argv.mode === 'development';
 const isProduction = !isDevelopment;
 
 module.exports = {
-  entry: ['whatwg-fetch', './src/index.js'],
+  entry: ['whatwg-fetch', './src/js/index.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
@@ -63,6 +64,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'

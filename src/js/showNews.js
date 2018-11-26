@@ -1,4 +1,4 @@
-import './showNews.scss';
+import '../scss/showNews.scss';
 
 export const getArticles = function*() {
   let container = document.querySelector('#content');

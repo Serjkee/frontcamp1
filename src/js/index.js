@@ -1,9 +1,9 @@
 import 'promise-polyfill/src/polyfill';
-import './styles.scss';
+import '../scss/styles.scss';
 
 
-import './news-image.jpg';
-import './noimage.jpg';
+import '../img/news-image.jpg';
+import '../img/noimage.jpg';
 
 let execute = (generator, yieldValue) => {
   let next = generator.next(yieldValue);
