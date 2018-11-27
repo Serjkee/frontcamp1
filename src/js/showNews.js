@@ -2,18 +2,8 @@ import '../scss/showNews.scss';
 
 import '../img/noimage.jpg';
 
-export const getArticles = function*() {
-  let container = document.querySelector('#content');
-  let articles = [];
-  let insertArticles = [];
-  let chanel = `sources=${document.querySelector('#chanel').value ? document.querySelector('#chanel').value : 'cnn'}&`;
-  let amount = `pageSize=${document.querySelector('#amount').value ? document.querySelector('#amount').value : 10}&`;
-  let url = `https://newsapi.org/v2/everything?${chanel}sortBy=publishedAt&${amount}language=en&apiKey=50e7f6495b2b43a9a2cff93bcd0399da`;
-  let urlFetch = yield fetch(url);
-  let urlPromise = yield urlFetch.json();
-
-  articles = urlPromise.articles;
-  insertArticles = articles.map( art => {
+export const renderArticles = function(container, articles) {
+  const insertArticles = articles.map( art => {
     return `<div class="item-wrapper">
     <div class="item-header">
       <div class="image">
@@ -34,7 +24,6 @@ export const getArticles = function*() {
     </div>
     </div>`
   } );
+
   container.innerHTML = insertArticles.join('');
-  
-  return insertArticles;
 }

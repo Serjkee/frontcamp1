@@ -34,7 +34,8 @@ module.exports = {
           options: {
             type: 'string'
           }
-        }
+        },
+        type: 'javascript/auto'
       },
       {
         test: /\.html$/,

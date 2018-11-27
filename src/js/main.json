@@ -7,6 +7,7 @@
   "boolean": true,
   "color": "#82b92c",
   "null": null,
+  "123": "456",
   "number": 123,
   "object": {
     "a": "b",

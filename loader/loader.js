@@ -1,8 +1,11 @@
-import { getOptions } from 'loader-utils';
+const options = require('loader-utils');
+const path = require('path');
 
 module.exports = function (source) {
   const jsonObject = JSON.parse(source);
-  Object.keys(jsonObject).map(key => typeof key === 'string' ? true : null);
-  console.log(this);
-  return `module.exports = '${jsonObject}'`
+  const keyArray = Object.keys(jsonObject).map(key => typeof key === 'string' ? key : null);
+  const keyObject = {...keyArray}
+  console.log(keyArray);
+  this.emitFile(path.basename(this.resourcePath), JSON.stringify(keyObject));
+  return `module.exports = '${JSON.stringify(keyObject)}'`
 }
