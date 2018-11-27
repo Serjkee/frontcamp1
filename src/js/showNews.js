@@ -1,5 +1,7 @@
 import '../scss/showNews.scss';
 
+import '../img/noimage.jpg';
+
 export const getArticles = function*() {
   let container = document.querySelector('#content');
   let articles = [];

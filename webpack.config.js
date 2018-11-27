@@ -27,6 +27,16 @@ module.exports = {
         }
       },
       {
+        test: /\.json$/,
+        exclude: /node_modules/,
+        use: {
+          loader: path.resolve('./loader/loader.js'),
+          options: {
+            type: 'string'
+          }
+        }
+      },
+      {
         test: /\.html$/,
         use: [{
           loader: "html-loader"
