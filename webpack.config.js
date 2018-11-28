@@ -29,12 +29,19 @@ module.exports = {
       {
         test: /\.json$/,
         exclude: /node_modules/,
-        use: {
+        use: [
+          {
+            loader: path.resolve('./loader/addObject.js'),
+            options: {
+              addObj: {raz: 'dva', privet: 'poka'}
+            }
+          },
+          {
           loader: path.resolve('./loader/loader.js'),
           options: {
             type: 'string'
           }
-        },
+        }],
         type: 'javascript/auto'
       },
       {

@@ -1,11 +1,9 @@
 import 'promise-polyfill/src/polyfill';
 import '../scss/styles.scss';
 import Fetcher from  './fetcher';
-import test from './main.json';
+import './main.json';
 
 import '../img/news-image.jpg';
-
-console.log(test);
 
 
 let submitButton = document.querySelector('#search');
