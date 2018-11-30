@@ -6,7 +6,7 @@ export const renderArticles = function(container, articles) {
   const insertArticles = articles.map( art => {
     return `<div class="item-wrapper">
     <div class="item-header">
-      <div class="image">
+    <div class="image">
         <img src="${art.urlToImage ? art.urlToImage : 'noimage.jpg'}" alt="article image">
       </div>
       <div class="item-utility">
