@@ -1,7 +1,8 @@
 class Fetcher {
-  constructor() {
-    this.baseUrl = `https://newsapi.org/v2/everything?`;
-    this.apiKey = `50e7f6495b2b43a9a2cff93bcd0399da`;
+  constructor(baseUrl = `https://newsapi.org/v2/everything?`, apiKey = `50e7f6495b2b43a9a2cff93bcd0399da`, method = {method: 'GET'}) {
+    this.baseUrl = baseUrl;
+    this.apiKey = apiKey;
+    this.method = method;
   }
 
   generateRequestUrl(chanel, amount) {
@@ -9,9 +10,11 @@ class Fetcher {
   }
 
   fetchAndRenderData(chanel, amount) {
-    return fetch(this.generateRequestUrl(chanel, amount))
+    return fetch(this.generateRequestUrl(chanel, amount), this.method)
             .then(res => res.json());
   }
 }
 
-export const fetcher = new Fetcher();
+export const fetchFactory = function(baseUrl, apiKey, method) {
+  return new Fetcher(baseUrl, apiKey, method);
+}

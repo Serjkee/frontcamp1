@@ -18,7 +18,7 @@ class Loader {
     `}
 
     showLoader() {
-        this.container.style.display = 'block';
+        this.container.style.display = 'flex';
     }
 
     hideLoader() {
@@ -27,5 +27,3 @@ class Loader {
 }
 
 export const loaderRenderer = new Loader();
-// loaderRenderer.generateLoaderMarkup();
-// export default loaderRenderer;

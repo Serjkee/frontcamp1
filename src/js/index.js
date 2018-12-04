@@ -1,20 +1,24 @@
 import 'promise-polyfill/src/polyfill';
 import '../scss/styles.scss';
-import { fetcher } from  './fetcher';
+import '../scss/loader.scss'
 import './main.json';
+
+import { fetchFactory } from  './fetcher';
 import { newsRenderer } from './renderer';
 import { loaderRenderer } from './loader';
+import { filtersRenderer } from './fliters';
 
 import '../img/news-image.jpg';
 
-let submitButton = document.querySelector('#search');
+export const fetcherGet = fetchFactory(void 0, void 0, void 0);
+export const fetcherPost = fetchFactory(void 0, void 0, {method: 'POST'});
 
-submitButton.addEventListener('click', (event) => {
-  const chanel = `sources=${document.querySelector('#chanel').value ? document.querySelector('#chanel').value : 'cnn'}&`;
-  const amount = `pageSize=${document.querySelector('#amount').value ? document.querySelector('#amount').value : 10}&`;
+filtersRenderer.submitButton.addEventListener('click', (event) => {
+  const chanel = filtersRenderer.chanelValue;
+  const amount = filtersRenderer.amountValue;
   event.preventDefault();
   loaderRenderer.showLoader();
-  fetcher.fetchAndRenderData(chanel, amount)
+  fetcherGet.fetchAndRenderData(chanel, amount)
       .then(data => newsRenderer.render(data.articles)
           .then(() => loaderRenderer.hideLoader()));
 });
