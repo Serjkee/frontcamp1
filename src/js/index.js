@@ -4,17 +4,14 @@ import '../scss/loader.scss'
 import './main.json';
 
 import { fetchFactory } from  './fetcher';
-import { newsRenderer } from './renderer';
+import { newsOrErrorRenderer } from './renderer';
 import { loaderRenderer } from './loader';
-import { filtersRenderer } from './fliters';
+import { filtersRenderer } from './filters';
 
 import '../img/news-image.jpg';
 
 const fetcherGet = fetchFactory(void 0, void 0, {method: 'GET'});
 const fetcherPost = fetchFactory(void 0, void 0, {method: 'POST'});
-
-// console.log(fetcherGet, fetcherPost);
-// const funcStorage = fetcherGet.fetchAndRenderData;
 
 filtersRenderer.submitButton.addEventListener('click', (event) => {
   const chanel = filtersRenderer.chanelValue;
@@ -22,6 +19,6 @@ filtersRenderer.submitButton.addEventListener('click', (event) => {
   event.preventDefault();
   loaderRenderer.showLoader();
   fetcherGet(chanel, amount)
-      .then(data => newsRenderer.render(data.articles)
+      .then(data => newsOrErrorRenderer.render(data.articles)
           .then(() => loaderRenderer.hideLoader()));
 });

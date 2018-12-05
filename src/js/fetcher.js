@@ -5,8 +5,7 @@ class Fetcher {
         this.parameters = parameters;
         return new Proxy(this.fetchAndRenderData, {
             apply: (target, thisValue, arg) => {
-              console.log('Im called with proxy', thisValue);
-              return Reflect.apply(target, that, arg);
+              return Reflect.apply(target, this, arg);
           }
         });
     }
@@ -21,13 +20,12 @@ class Fetcher {
     }
 }
 
-class FethcerGet extends Fetcher{
+class FetcherGet extends Fetcher{
   constructor(baseUrl, apiKey) {
     super(baseUrl, apiKey, {method: 'GET'});
   }
 
   fetchAndRenderData(chanel, amount) {
-    console.log('request from fetcherGet', super.fetchAndRenderData);
     return super.fetchAndRenderData(chanel, amount);
   }
 }
@@ -41,7 +39,7 @@ class FetcherPost extends Fetcher {
 export const fetchFactory = function(baseUrl, apiKey, parameters) {
   switch (parameters.method) {
       case 'GET':
-        return new FethcerGet(baseUrl, apiKey);
+        return new FetcherGet(baseUrl, apiKey);
       case 'POST':
         return new FetcherPost(baseUrl, apiKey);
       default:

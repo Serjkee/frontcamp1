@@ -3,12 +3,17 @@ import '../scss/showNews.scss';
 import '../img/noimage.jpg';
 
 const customNews = {
-    urlToImage: null,
-    art: {
-      source : {
-        name: 'Custom News!'
-      }
-    }
+  author: "Siarhei",
+  content: "MY CUSTOM NEWS",
+  description: "MY CUSTOM NEWS",
+  publishedAt: "2018-12-05T16:20:59Z",
+  source: {
+    id: "my custom",
+    name: "my custom"
+  },
+  title: "MY CUSTOM NEWS",
+  url: "https://github.com/Serjkee/frontcamp1",
+  urlToImage: null
 }
 
 export const renderArticles = function(container, articles) {
@@ -35,10 +40,11 @@ export const renderArticles = function(container, articles) {
   } );
 
   container.innerHTML = insertArticles.join('');
-
-  /*
-  *  создай прокси для renderArticles, которая будет делать то же самое, но твоя прокси будет добавлять статичную новость в articles
-  *
-  *  [{description: '123'}, {description: '456'}] => [{description: 'Hi Im custom news!'},{description: '123'}, {description: '456'}]
-  * */
 }
+
+export const proxiedArticles = new Proxy(renderArticles, {
+  apply: (target, thisVal, arg) => {
+    arg[1].unshift(customNews);
+    return Reflect.apply(target, this, arg);
+}
+});
