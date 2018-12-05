@@ -1,17 +1,23 @@
 class FiltersRenderer {
   constructor() {
-    this.filterBlock = document.querySelector('.filters');
-    this.generateFiltersMarkup();
+    this.init()
+  }
 
-    this.chanelInput = document.querySelector('#chanel');
-    this.chanelValue = `sources=${this.chanelInput.value ? this.chanelInput.value : 'cnn'}&`;
-    this.chanelInput.addEventListener('onchange', () => this.changeChanel());
+  init () {
+      this.filterBlock = document.querySelector('.filters');
+      this.generateFiltersMarkup();
 
-    this.amountInput = document.querySelector('#amount');
-    this.amountValue = `pageSize=${this.amountInput.value ? this.amountInput.value : 10}&`;
+      this.chanelInput = document.querySelector('#chanel');
+
+      this.chanelValue = `sources=${this.chanelInput.value ? this.chanelInput.value : 'cnn'}&`;
+      this.chanelInput.addEventListener('change', event => this.changeChanel(event));
 
 
-    this.submitButton = document.querySelector('#search');
+
+      this.amountInput = document.querySelector('#amount');
+      this.amountValue = `pageSize=${this.amountInput.value ? this.amountInput.value : 10}&`;
+
+      this.submitButton = document.querySelector('#search');
   }
 
   generateFiltersMarkup() {
@@ -23,9 +29,8 @@ class FiltersRenderer {
     </form>`
   }
 
-  changeChanel() {
-    console.log(this.chanelInput.value);
-    this.chanelValue = `sources=${this.chanelInput.value}&`;
+  changeChanel(event) {
+    this.chanelValue = `sources=${event.target.value}&`;
   }
 
   changeAmount() {

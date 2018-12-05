@@ -2,6 +2,15 @@ import '../scss/showNews.scss';
 
 import '../img/noimage.jpg';
 
+const customNews = {
+    urlToImage: null,
+    art: {
+      source : {
+        name: 'Custom News!'
+      }
+    }
+}
+
 export const renderArticles = function(container, articles) {
   const insertArticles = articles.map( art => {
     return `<div class="item-wrapper">
@@ -26,4 +35,10 @@ export const renderArticles = function(container, articles) {
   } );
 
   container.innerHTML = insertArticles.join('');
+
+  /*
+  *  создай прокси для renderArticles, которая будет делать то же самое, но твоя прокси будет добавлять статичную новость в articles
+  *
+  *  [{description: '123'}, {description: '456'}] => [{description: 'Hi Im custom news!'},{description: '123'}, {description: '456'}]
+  * */
 }

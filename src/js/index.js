@@ -10,15 +10,18 @@ import { filtersRenderer } from './fliters';
 
 import '../img/news-image.jpg';
 
-export const fetcherGet = fetchFactory(void 0, void 0, void 0);
-export const fetcherPost = fetchFactory(void 0, void 0, {method: 'POST'});
+const fetcherGet = fetchFactory(void 0, void 0, {method: 'GET'});
+const fetcherPost = fetchFactory(void 0, void 0, {method: 'POST'});
+
+// console.log(fetcherGet, fetcherPost);
+// const funcStorage = fetcherGet.fetchAndRenderData;
 
 filtersRenderer.submitButton.addEventListener('click', (event) => {
   const chanel = filtersRenderer.chanelValue;
   const amount = filtersRenderer.amountValue;
   event.preventDefault();
   loaderRenderer.showLoader();
-  fetcherGet.fetchAndRenderData(chanel, amount)
+  fetcherGet(chanel, amount)
       .then(data => newsRenderer.render(data.articles)
           .then(() => loaderRenderer.hideLoader()));
 });
