@@ -12,18 +12,18 @@ class NewsOrErrorRenderer {
         return import('./errorMessage');
     }
 
-    render(data) {
-        if (data) {
-            this.importError()
-                .then(error => error.errorMessage.hideError())
-            return this.importTemplate()
-                .then(templater => templater.proxiedArticles(this.contentContainer, data))
-        } else {
-            this.importTemplate()
-                .then(templater => templater.renderArticles(this.contentContainer, []))
-            return this.importError()
-                .then(error => error.errorMessage.showError())
-        }
+    renderError() {
+        this.importTemplate()
+            .then(templater => templater.renderArticles(this.contentContainer, []))
+        return this.importError()
+            .then(error => error.errorMessage.showError())
+    }
+
+    renderArticles(data) {
+        this.importError()
+            .then(error => error.errorMessage.hideError())
+        return this.importTemplate()
+            .then(templater => templater.proxiedArticles(this.contentContainer, data))
     }
 }
 

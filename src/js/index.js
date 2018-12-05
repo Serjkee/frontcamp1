@@ -18,7 +18,6 @@ filtersRenderer.submitButton.addEventListener('click', (event) => {
   const amount = filtersRenderer.amountValue;
   event.preventDefault();
   loaderRenderer.showLoader();
-  fetcherGet(chanel, amount)
-      .then(data => newsOrErrorRenderer.render(data.articles)
-          .then(() => loaderRenderer.hideLoader()));
+  fetcherGet(chanel, amount).then(data => newsOrErrorRenderer.renderArticles(data.articles).then(() => loaderRenderer.hideLoader()))
+  .catch(res => newsOrErrorRenderer.renderError()).then(() => loaderRenderer.hideLoader());
 });
