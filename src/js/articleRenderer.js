@@ -1,4 +1,4 @@
-class NewsOrErrorRenderer {
+class ArticleRenderer {
     constructor() {
         this.contentContainer = document.querySelector('#content');
         this.errorContainer = document.querySelector('#error');
@@ -27,4 +27,4 @@ class NewsOrErrorRenderer {
     }
 }
 
-export const newsOrErrorRenderer = new NewsOrErrorRenderer();
+export const articleRenderer = new ArticleRenderer();

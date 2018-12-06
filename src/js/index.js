@@ -4,7 +4,8 @@ import '../scss/loader.scss'
 import './main.json';
 
 import { fetchFactory } from  './fetcher';
-import { newsOrErrorRenderer } from './renderer';
+import { articleRenderer } from './articleRenderer';
+import { errorRenderer } from './errorRenderer';
 import { loaderRenderer } from './loader';
 import { filtersRenderer } from './filters';
 
@@ -18,6 +19,6 @@ filtersRenderer.submitButton.addEventListener('click', (event) => {
   const amount = filtersRenderer.amountValue;
   event.preventDefault();
   loaderRenderer.showLoader();
-  fetcherGet(chanel, amount).then(data => newsOrErrorRenderer.renderArticles(data.articles).then(() => loaderRenderer.hideLoader()))
-  .catch(res => newsOrErrorRenderer.renderError()).then(() => loaderRenderer.hideLoader());
+  fetcherGet(chanel, amount).then(data => articleRenderer.renderArticles(data.articles).then(() => loaderRenderer.hideLoader()))
+  .catch(res => errorRenderer.renderError()).then(() => loaderRenderer.hideLoader());
 });
