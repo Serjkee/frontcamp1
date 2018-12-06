@@ -15,10 +15,13 @@ const fetcherGet = fetchFactory(void 0, void 0, {method: 'GET'});
 const fetcherPost = fetchFactory(void 0, void 0, {method: 'POST'});
 
 filtersRenderer.submitButton.addEventListener('click', (event) => {
-  const chanel = filtersRenderer.chanelValue;
-  const amount = filtersRenderer.amountValue;
-  event.preventDefault();
-  loaderRenderer.showLoader();
-  fetcherGet(chanel, amount).then(data => articleRenderer.renderArticles(data.articles).then(() => loaderRenderer.hideLoader()))
-  .catch(res => errorRenderer.renderError()).then(() => loaderRenderer.hideLoader());
+    const chanel = filtersRenderer.chanelValue;
+    const amount = filtersRenderer.amountValue;
+    event.preventDefault();
+    loaderRenderer.showLoader();
+    fetcherGet(chanel, amount).then(data => articleRenderer.renderArticles(data.articles).then(() => errorRenderer.hideError()).then(() => loaderRenderer.hideLoader()))
+        .catch(() => {
+            articleRenderer.cleanArticles();
+            errorRenderer.showError();
+        }).then(() => loaderRenderer.hideLoader());
 });
