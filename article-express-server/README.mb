@@ -1,0 +1,4 @@
+It uses https://mlab.com/ as a mongoDB service.
+
+
+Tested with postman.
