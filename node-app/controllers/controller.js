@@ -20,6 +20,9 @@ exports.create = function (req, res, next) {
 
 exports.read = function (req, res, next) {
   try {
+    if (isNaN(req.params.id)) {
+      throw new Error('Wrong id type (expected number)');
+    }
     data.map( obj => {
       obj.id === req.params.id ? console.log(obj) : null;
     });
@@ -34,17 +37,23 @@ exports.update = function (req, res, next) {
     if(!req.body.author || !req.body.description) {
       throw new Error('No body or description provided');
     }
-    data.map( obj => {
+    let currentItemIndex ;
+    let objId;
+
+    data.find( obj => {
       if(obj.id === req.params.id) {
-        let updatedItem = {
-          id: obj.id,
-          author: req.body.author, 
-          description: req.body.description
-        }
-        let currentItemIndex = data.indexOf(obj);
-        data.splice(currentItemIndex, 1, updatedItem);
+        currentItemIndex = data.indexOf(obj);
+        objId = obj.id
       }
     });
+
+    let updatedItem = {
+      id: objId,
+      author: req.body.author, 
+      description: req.body.description
+    }
+
+    data.splice(currentItemIndex, 1, updatedItem);
     console.log(data);
     res.send('updated');
   } catch(err) {
@@ -54,6 +63,9 @@ exports.update = function (req, res, next) {
 
 exports.delete = function (req, res, next) {
   try {
+    if(isNaN(req.params.id)) {
+      throw new Error('Wrong id type (expected number)');
+    }
     data.map( obj => {
       if(obj.id === req.params.id) {
         let currentItemIndex = data.indexOf(obj);
