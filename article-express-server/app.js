@@ -30,11 +30,10 @@ const errorHandler = (err, req, res, next) => {
 }
 
 // Render pug template in './views/index.pug' 
+app.set('view engine', 'pug');
 app.get('/', function (req, res) {
   res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
-
-app.set('view engine', 'pug');
 
 // Logger setting.
 const logStream = fs.createWriteStream('logger.txt', { flags: 'a' });
