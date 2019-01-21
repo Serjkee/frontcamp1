@@ -23,7 +23,7 @@ exports.read = function (req, res, next) {
     if (isNaN(req.params.id)) {
       throw new Error('Wrong id type (expected number)');
     }
-    data.map( obj => {
+    data.find( obj => {
       obj.id === req.params.id ? console.log(obj) : null;
     });
     res.send('read');
@@ -66,12 +66,14 @@ exports.delete = function (req, res, next) {
     if(isNaN(req.params.id)) {
       throw new Error('Wrong id type (expected number)');
     }
-    data.map( obj => {
+    let currentItemIndex;
+
+    data.find( obj => {
       if(obj.id === req.params.id) {
-        let currentItemIndex = data.indexOf(obj);
-        data.splice(currentItemIndex, 1);
+        currentItemIndex = data.indexOf(obj);
       }
     });
+    data.splice(currentItemIndex, 1);
     console.log(data);
     res.send('deleted');
   } catch(err) {
