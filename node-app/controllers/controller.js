@@ -23,9 +23,8 @@ exports.read = function (req, res, next) {
     if (isNaN(req.params.id)) {
       throw new Error('Wrong id type (expected number)');
     }
-    data.find( obj => {
-      obj.id === req.params.id ? console.log(obj) : null;
-    });
+    let objectToDisplay = data.find( obj => obj.id === req.params.id);
+    console.log(objectToDisplay)
     res.send('read');
   } catch(err) {
     next(err);
@@ -37,15 +36,9 @@ exports.update = function (req, res, next) {
     if(!req.body.author || !req.body.description) {
       throw new Error('No body or description provided');
     }
-    let currentItemIndex ;
-    let objId;
 
-    data.find( obj => {
-      if(obj.id === req.params.id) {
-        currentItemIndex = data.indexOf(obj);
-        objId = obj.id
-      }
-    });
+    let currentItemIndex = data.findIndex( obj => obj.id === req.params.id);
+    let objId = data[currentItemIndex].id;
 
     let updatedItem = {
       id: objId,
@@ -66,13 +59,7 @@ exports.delete = function (req, res, next) {
     if(isNaN(req.params.id)) {
       throw new Error('Wrong id type (expected number)');
     }
-    let currentItemIndex;
-
-    data.find( obj => {
-      if(obj.id === req.params.id) {
-        currentItemIndex = data.indexOf(obj);
-      }
-    });
+    let currentItemIndex = data.findIndex( obj => obj.id === req.params.id );
     data.splice(currentItemIndex, 1);
     console.log(data);
     res.send('deleted');
