@@ -15,6 +15,7 @@ exports.create = function (req, res, next) {
 };
 
 exports.read = function (req, res, next) {
+  console.log(req.isAuthenticated());
   Article.findById( req.params.id, function(err, article) {
     if(err) return console.log(err);
     console.log(article);
