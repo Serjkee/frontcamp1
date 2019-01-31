@@ -23,6 +23,7 @@ app.use(function(req, res, next) {
 // Passport JS
 var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 const User = require('./model/user.model');
 var session = require('express-session')
 
@@ -59,8 +60,19 @@ passport.use(new LocalStrategy(
   }
 ));
 
+passport.use(new FacebookStrategy({
+  clientID: '1963663287275999',
+  clientSecret: '1012a15a8e57601b68e280613d21a0bd',
+  callbackURL: "http://localhost:3000/user/facebook/callback"
+},
+function(accessToken, refreshToken, profile, cb) {
+  User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    return cb(err, user);
+  });
+}
+));
 
-
+// Routes and middlewares.
 app.get('/', function (req, res, next) {
   res.send('Hello World!');
 });
