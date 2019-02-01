@@ -2,18 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const crud = require('../controllers/article.controller.js');
+const utils = require('../middlewares/utils/utils');
 
-let userAuthCheck = function(req, res, next) {
-  if (req.isAuthenticated()) {
-    console.log('darova');
-    return next()
-  }
-  res.redirect('/user')
-}
-
-router.post('/create', userAuthCheck, crud.create);
-router.get('/:id', userAuthCheck, crud.read);
-router.put('/:id/update', userAuthCheck, crud.update);
-router.delete('/:id/delete', userAuthCheck, crud.delete);
+router.post('/create', utils.userAuthCheck, crud.create);
+router.get('/:id', utils.userAuthCheck, crud.read);
+router.put('/:id/update', utils.userAuthCheck, crud.update);
+router.delete('/:id/delete', utils.userAuthCheck, crud.delete);
 
 module.exports = router;
