@@ -9,17 +9,17 @@ exports.create = function (req, res, next) {
   })
 
   createArticle.save(function(err) {
-    if(err) return console.log(err);
-    res.send('created succesfully');
+    if(err) return next(err);
+    res.status(200).send('created succesfully');
   });
 };
 
 exports.read = function (req, res, next) {
   console.log(req.isAuthenticated());
   Article.findById( req.params.id, function(err, article) {
-    if(err) return console.log(err);
+    if(err) return next(err);
     console.log(article);
-    res.send('read succesfully');
+    res.status(200).send('read succesfully');
   });
 };
 
@@ -30,14 +30,14 @@ exports.update = function (req, res, next) {
   }
 
   Article.findByIdAndUpdate(req.params.id, documentToReplace, function(err) {
-    if(err) return console.log(err);
-    res.send('updated succesfully');
+    if(err) return next(err);
+    res.status(200).send('updated succesfully');
   })
 };
 
 exports.delete = function (req, res, next) {
   Article.findByIdAndDelete(req.params.id, function(err) {
-    if(err) return console.log(err);
-    res.send('deleted succesfully');
+    if(err) return next(err);
+    res.status(200).send('deleted succesfully');
   })
 };

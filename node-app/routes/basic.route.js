@@ -1,5 +1,5 @@
 let basicUrl = function (req, res, next) {
-  res.send('Hello World!');
+  res.status(200).send('Hello World!');
 }
 
 module.exports = basicUrl;

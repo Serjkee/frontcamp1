@@ -3,7 +3,7 @@ let userAuthCheck = function(req, res, next) {
     console.log('darova');
     return next()
   }
-  res.redirect('/user')
+  res.status(308).send('Please log in')
 }
 
 module.exports = userAuthCheck;

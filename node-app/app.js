@@ -39,4 +39,5 @@ passport.use(passportAuth.facebookStrategy);
 app.get('/', route.basicUrl);
 app.use('/user', route.users);
 app.use('/articles', route.articles);
+app.use('/*', utils.pageNotFound);
 app.use(utils.errorHandler);
