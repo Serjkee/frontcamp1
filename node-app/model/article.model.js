@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const autoIncrement = require('mongoose-auto-increment');
+
+const connection = mongoose.createConnection("mongodb://localhost/articles");
+autoIncrement.initialize(connection);
 
 // Article schema.
 let articleSchema = new Schema({
@@ -7,4 +11,5 @@ let articleSchema = new Schema({
     description: {type: String, required: true}
 });
 
-module.exports = mongoose.model('Article', articleSchema, 'articles');
+articleSchema.plugin(autoIncrement.plugin, 'Article');
+module.exports = connection.model('Article', articleSchema, 'articles');

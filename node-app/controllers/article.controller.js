@@ -19,7 +19,7 @@ exports.read = function (req, res, next) {
   Article.findById( req.params.id, function(err, article) {
     if(err) return next(err);
     console.log(article);
-    res.status(200).send('read succesfully');
+    res.status(200).json(article);
   });
 };
 
@@ -31,7 +31,7 @@ exports.update = function (req, res, next) {
 
   Article.findByIdAndUpdate(req.params.id, documentToReplace, function(err) {
     if(err) return next(err);
-    res.status(200).send('updated succesfully');
+    res.status(200).json(documentToReplace);
   })
 };
 
