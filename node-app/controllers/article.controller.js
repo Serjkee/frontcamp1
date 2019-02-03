@@ -10,7 +10,7 @@ exports.create = function (req, res, next) {
 
   createArticle.save(function(err) {
     if(err) return next(err);
-    res.status(200).send('created succesfully');
+    res.status(201).send('created succesfully');
   });
 };
 
@@ -31,7 +31,7 @@ exports.update = function (req, res, next) {
 
   Article.findByIdAndUpdate(req.params.id, documentToReplace, function(err) {
     if(err) return next(err);
-    res.status(200).json(documentToReplace);
+    res.status(201).json(documentToReplace);
   })
 };
 

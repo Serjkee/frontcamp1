@@ -7,7 +7,7 @@ let facebookStrategy = new FacebookStrategy({
   callbackURL: 'http://localhost:3000/user/facebook/callback'
 },
 function(accessToken, refreshToken, profile, cb) {
-  User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+  User.findOrCreate({ username: profile.displayName, password: profile.id }, function (err, user) {
     return cb(err, user);
   });
 }

@@ -11,6 +11,7 @@ let choosungFacebookStrategy = passport.authenticate('facebook', { failureRedire
 router.post('/login', choosingLocalStrategy, userAuth.login);
 router.post('/register', userAuth.register);
 router.get('/logout', userAuth.logout);
-router.get('/facebook', choosungFacebookStrategy, facebookAuth.login);
+router.get('/facebook', choosungFacebookStrategy);
+router.get('/facebook/callback', choosungFacebookStrategy, facebookAuth.login);
 
 module.exports = router;
