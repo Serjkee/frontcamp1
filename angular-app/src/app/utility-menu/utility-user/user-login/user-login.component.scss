@@ -1,0 +1,19 @@
+.user-login {
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-right: 15px;
+    color: #fff;
+  }
+
+  .register-button {
+    margin-right: 10px;
+  }
+
+  button {
+    height: 100%;
+    color: #fff;
+    background-color: #ff4081;
+  }
+}
