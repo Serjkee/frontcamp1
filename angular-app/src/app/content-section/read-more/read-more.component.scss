@@ -1,0 +1,78 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.read-more > .card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-width: 700px;
+  max-width: 900px;
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 15px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  transition: all .3s ease;
+
+  &:hover,
+  &:focus {
+    border: 2px solid #54bf8c;
+    box-shadow: 3px 3px 20px 1px #54bf8c;
+  }
+
+  .card-image {
+    align-self: flex-start;
+    width: 35%;
+    margin-right: 5%;
+  }
+
+  .card-description {
+    width: 60%;
+    margin-bottom: 25px;
+
+    .card-title {
+      margin: 0 0 10px;
+    }
+
+    .card-text {
+      margin: 0 0 10px;
+      overflow: hidden;
+    }
+
+    .card-link {
+      color: #54bf8c;
+      text-decoration: none;
+    }
+  }
+
+  .card-date {
+    align-self: unset;
+
+    p {
+      margin: 0;
+      text-align: right;
+    }
+  }
+
+  .card-date {
+    width: 20%;
+  }
+
+  .card-actions {
+    display: flex;
+
+    a {
+      color: #fff;
+      background-color: #ff4081;
+    }
+
+    .card-edit {
+      margin-right: 20px;
+    }
+  }
+}

@@ -1,3 +1,16 @@
-<p>
-  read-more works!
-</p>
+<div class="read-more">
+  <div class="card-wrapper">
+    <div class="card-image"><img [src]="dataObject.imgPath" alt="alt"></div>
+    <div class="card-description">
+      <h3 class="card-title">{{dataObject.title}}</h3>
+      <p class="card-text">{{dataObject.description}}</p>
+    </div>
+    <div class="card-date">
+      <p>{{dataObject.date}}</p>
+    </div>
+    <div class="card-actions">
+      <a mat-button routerLink='../../edit/{{cardId}}' class="card-edit">Edit</a>
+      <a mat-button href="#" (click)="deleteArticle($event)" class="card-delete">Delete</a>
+    </div>
+  </div>
+</div>

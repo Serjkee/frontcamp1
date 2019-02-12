@@ -5,14 +5,14 @@
       <div class="card-description">
         <h3 class="card-title">{{card.title}}</h3>
         <p class="card-text">{{card.description}}</p>
-        <a href="#" class="card-link">Read more!</a>
+        <a href="#" routerLink='news/{{cards.indexOf(card)}}' class="card-link">Read more!</a>
       </div>
       <div class="card-date">
         <p>{{card.date}}</p>
       </div>
       <div class="card-actions">
-        <button mat-button class="card-edit">Edit</button>
-        <button mat-button class="card-delete">Delete</button>
+        <a mat-button routerLink='edit/{{cards.indexOf(card)}}' class="card-edit">Edit</a>
+        <a mat-button href='#' (click)="deleteArticle($event)" class="card-delete">Delete</a>
       </div>
     </div>
   </div>
@@ -21,3 +21,4 @@
       <button mat-button class="load-more">Load more</button>
   </div>
 </div>
+

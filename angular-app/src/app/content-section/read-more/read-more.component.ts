@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {cards} from '../../mockData';
 
 @Component({
   selector: 'app-read-more',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReadMoreComponent implements OnInit {
 
-  constructor() { }
+  public dataObject: any = null;
+  public cardId: any = null;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.dataObject = cards[this.route.snapshot.params['id']];
+    this.cardId = this.route.snapshot.params['id'];
+  }
+
+  deleteArticle(e) {
+    e.preventDefault();
+    console.log('deleted!');
   }
 
 }

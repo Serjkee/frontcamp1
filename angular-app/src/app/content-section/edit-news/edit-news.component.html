@@ -2,7 +2,7 @@
   <form action="#" class="edit-form">
     <div class="left-side">
       <mat-form-field class="edit-heading">
-        <input matInput placeholder="Heading">
+        <input matInput placeholder="Heading" value={{dataObject.title}}>
       </mat-form-field>
 
       <mat-form-field class="edit-short-descr">
@@ -10,17 +10,17 @@
       </mat-form-field> 
 
       <mat-form-field class="edit-description">
-        <textarea matInput placeholder="Write full description"></textarea>
+        <textarea matInput placeholder="Write full description" value={{dataObject.description}}></textarea>
       </mat-form-field>
     </div>
 
     <div class="right-side">
       <mat-form-field class="edit-image">
-        <input matInput placeholder="Put image url here">
+        <input matInput placeholder="Put image url here" value={{dataObject.imgPath}}>
       </mat-form-field>
 
       <mat-form-field class="edit-date">
-        <input matInput placeholder="Choose date">
+        <input matInput placeholder="Choose date" value={{dataObject.date}}>
       </mat-form-field> 
 
       <mat-form-field class="edit-author">

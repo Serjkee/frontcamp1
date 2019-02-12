@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {cards} from '../../mockData';
 
 @Component({
   selector: 'app-edit-news',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditNewsComponent implements OnInit {
 
-  constructor() { }
+  public dataObject: any = null;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.dataObject = cards[this.route.snapshot.params['id']];
   }
 
   saveNews(e) {

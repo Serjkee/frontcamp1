@@ -20,7 +20,8 @@ import { ReadMoreComponent } from './content-section/read-more/read-more.compone
 
 const router = [
   {path: '', component: ContentSectionComponent},
-  {path: ':id', component: EditNewsComponent}
+  {path: 'edit/:id', component: EditNewsComponent},
+  {path: 'news/:id', component: ReadMoreComponent}
 ];
 
 

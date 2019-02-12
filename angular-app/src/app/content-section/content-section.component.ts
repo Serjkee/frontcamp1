@@ -16,4 +16,9 @@ export class ContentSectionComponent implements OnInit {
     this.cards = cards;
   }
 
+  deleteArticle(e) {
+    e.preventDefault();
+    console.log('deleted!');
+  }
+
 }
