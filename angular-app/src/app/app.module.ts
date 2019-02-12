@@ -16,10 +16,11 @@ import { FooterComponent } from './footer/footer.component';
 import { UserLoginComponent } from './utility-menu/utility-user/user-login/user-login.component';
 import { UserLogoutComponent } from './utility-menu/utility-user/user-logout/user-logout.component';
 import { EditNewsComponent } from './content-section/edit-news/edit-news.component';
+import { ReadMoreComponent } from './content-section/read-more/read-more.component';
 
 const router = [
   {path: '', component: ContentSectionComponent},
-  {path: 'login', component: UserLoginComponent}
+  {path: ':id', component: EditNewsComponent}
 ];
 
 
@@ -35,7 +36,8 @@ const router = [
     FooterComponent,
     UserLoginComponent,
     UserLogoutComponent,
-    EditNewsComponent
+    EditNewsComponent,
+    ReadMoreComponent
   ],
   imports: [
     BrowserModule,

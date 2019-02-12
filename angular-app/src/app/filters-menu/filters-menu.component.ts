@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {channels} from '../mockData';
 
 @Component({
   selector: 'app-filters-menu',
@@ -7,11 +8,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class FiltersMenuComponent implements OnInit {
 
-  @Input() channels;
+  public channels: any = null;
 
   constructor() { }
 
   ngOnInit() {
+    this.channels = channels;
   }
 
 }

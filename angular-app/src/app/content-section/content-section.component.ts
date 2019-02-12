@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {cards} from '../mockData';
 
 @Component({
   selector: 'app-content-section',
@@ -7,11 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ContentSectionComponent implements OnInit {
 
-  @Input() cards;
+  public cards: any = null;
 
   constructor() { }
 
   ngOnInit() {
+    this.cards = cards;
   }
 
 }
