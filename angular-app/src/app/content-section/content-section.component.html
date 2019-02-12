@@ -1,4 +1,23 @@
 <div class="content-wrapper">
-  <app-news-card></app-news-card>
-  <app-load-more></app-load-more>
+  <div class="news-cards">
+    <div class="card-wrapper" *ngFor="let card of cards">
+      <div class="card-image"><img [src]="card.imgPath" alt="alt"></div>
+      <div class="card-description">
+        <h3 class="card-title">{{card.title}}</h3>
+        <p class="card-text">{{card.description}}</p>
+        <a href="#" class="card-link">Read more!</a>
+      </div>
+      <div class="card-date">
+        <p>{{card.date}}</p>
+      </div>
+      <div class="card-actions">
+        <button mat-button class="card-edit">Edit</button>
+        <button mat-button class="card-delete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="load-more-wrapper">
+      <button mat-button class="load-more">Load more</button>
+  </div>
 </div>

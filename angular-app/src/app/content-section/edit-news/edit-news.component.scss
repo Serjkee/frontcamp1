@@ -1,0 +1,49 @@
+.edit-form {
+  display: flex;
+  min-width: 700px;
+  max-width: 900px;
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 25px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  transition: all .3s ease;
+
+  &:hover,
+  &:focus {
+    border: 2px solid #54bf8c;
+    box-shadow: 3px 3px 20px 1px #54bf8c;
+  }
+
+  .left-side {
+    width: 48%;
+    margin-right: 4%;
+
+    > .mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .right-side {
+    width: 48%;
+
+    > .mat-form-field {
+      width: 100%;
+    }
+
+    .edit-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .edit-save {
+        margin-right: 15px;
+      }
+
+      button {
+        color: #fff;
+        background-color: #ff4081;
+      }
+    }
+  }
+}

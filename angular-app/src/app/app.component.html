@@ -1,9 +1,8 @@
 <div class="app-wrapper">
   <app-utility-menu></app-utility-menu>
   <app-source-section></app-source-section>
-  <app-filters-menu></app-filters-menu>
-  <app-content-section></app-content-section>
+  <app-filters-menu [channels]="channels"></app-filters-menu>
+  <app-content-section [cards]="cards"></app-content-section>
   <app-footer></app-footer>
 </div>
-
 <router-outlet></router-outlet>

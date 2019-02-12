@@ -1,0 +1,41 @@
+<div class="edit-wrapper">
+  <form action="#" class="edit-form">
+    <div class="left-side">
+      <mat-form-field class="edit-heading">
+        <input matInput placeholder="Heading">
+      </mat-form-field>
+
+      <mat-form-field class="edit-short-descr">
+        <input matInput placeholder="Short description">
+      </mat-form-field> 
+
+      <mat-form-field class="edit-description">
+        <textarea matInput placeholder="Write full description"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="right-side">
+      <mat-form-field class="edit-image">
+        <input matInput placeholder="Put image url here">
+      </mat-form-field>
+
+      <mat-form-field class="edit-date">
+        <input matInput placeholder="Choose date">
+      </mat-form-field> 
+
+      <mat-form-field class="edit-author">
+          <input matInput placeholder="Change author">
+        </mat-form-field>
+  
+        <mat-form-field class="edit-source">
+          <input matInput placeholder="Edit source URL">
+        </mat-form-field> 
+      
+      <div class="edit-buttons">
+        <button mat-button class="edit-save" (click)="saveNews($event)">Save</button>
+        <button mat-button class="edit-cancel" (click)="cancelNews($event)">Cancel</button>
+      </div>
+      
+    </div>
+  </form>
+</div>

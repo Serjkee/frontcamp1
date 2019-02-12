@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-filters-menu',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filters-menu.component.scss']
 })
 export class FiltersMenuComponent implements OnInit {
+
+  @Input() channels;
 
   constructor() { }
 

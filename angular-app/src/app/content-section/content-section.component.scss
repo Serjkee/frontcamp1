@@ -8,3 +8,90 @@
 :host {
   flex-grow: 1;
 }
+
+.news-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 700px;
+  max-width: 900px;
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 15px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  transition: all .3s ease;
+
+  &:hover,
+  &:focus {
+    border: 2px solid #54bf8c;
+    box-shadow: 3px 3px 20px 1px #54bf8c;
+  }
+
+  .card-image {
+    width: 25%;
+  }
+
+  .card-description {
+    width: 30%;
+
+    .card-title {
+      margin: 0 0 10px;
+    }
+
+    .card-text {
+      max-height: 55px;
+      margin: 0 0 10px;
+      overflow: hidden;
+    }
+
+    .card-link {
+      color: #54bf8c;
+      text-decoration: none;
+    }
+  }
+
+  .card-date {
+    align-self: flex-start;
+
+    p {
+      margin: 0;
+      text-align: right;
+    }
+  }
+
+  .card-date {
+    width: 20%;
+  }
+
+  .card-actions {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      color: #fff;
+      background-color: #ff4081;
+    }
+
+    .card-edit {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.load-more-wrapper {
+  width: 300px;
+  margin: 40px auto 0;
+
+  .load-more {
+    width: 100%;
+    color: #fff;
+    background-color: #ff4081;
+  }
+}

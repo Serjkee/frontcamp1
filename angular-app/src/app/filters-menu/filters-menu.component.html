@@ -1,6 +1,29 @@
 <div class="filters-menu">
-  <app-news-filter></app-news-filter>
-  <app-text-filter></app-text-filter>
-  <app-news-switcher></app-news-switcher>
-  <app-add-news> </app-add-news>
+  <mat-form-field>
+    <mat-select placeholder="Choose news channel">
+      <mat-option *ngFor="let channel of channels" [value]="channels">
+        {{channel.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <form class="text-filter-form">
+    <mat-form-field class="text-filter">
+      <input matInput placeholder="Search: Fashion trends">
+    </mat-form-field>
+
+    <button mat-button class="text-filter-button">Filter</button>
+  </form>
+
+
+  <div class="news-switcher">
+    <mat-checkbox>Only created by me!</mat-checkbox>
+  </div>
+
+
+  <div class="add-news">
+    <button mat-button>Add article</button>
+  </div>
 </div>
+
+
