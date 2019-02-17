@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {channels} from '../mockData';
+import {FiltersService} from './filters.service';
 
 @Component({
   selector: 'app-filters-menu',
@@ -8,12 +8,11 @@ import {channels} from '../mockData';
 })
 export class FiltersMenuComponent implements OnInit {
 
-  public channels: any = null;
+  public channels: any = this.filters.channels;
 
-  constructor() { }
+  constructor(private filters: FiltersService) { }
 
   ngOnInit() {
-    this.channels = channels;
   }
 
 }
