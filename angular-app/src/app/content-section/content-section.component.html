@@ -1,6 +1,6 @@
 <div class="content-wrapper">
   <div class="news-cards">
-    <div class="card-wrapper" *ngFor="let card of cards">
+    <div class="card-wrapper" *ngFor="let card of cards | searchText: text">
       <div class="card-image"><img [src]="card.imgPath" alt="alt"></div>
       <div class="card-description">
         <h3 class="card-title">{{card.title}}</h3>
@@ -8,7 +8,7 @@
         <a href="#" routerLink='news/{{cards.indexOf(card)}}' class="card-link">Read more!</a>
       </div>
       <div class="card-date">
-        <p>{{card.date}}</p>
+        <p>{{card.date  | date}}</p>
       </div>
       <div class="card-actions">
         <a mat-button routerLink='edit/{{cards.indexOf(card)}}' class="card-edit">Edit</a>

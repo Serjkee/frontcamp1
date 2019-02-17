@@ -9,6 +9,7 @@ import { CardContentService } from './card-content.service';
 export class ContentSectionComponent implements OnInit {
 
   public cards: any = this.cardContent.cards;
+  public text: any = 'serj';
 
   constructor(private cardContent: CardContentService) { }
 

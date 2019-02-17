@@ -17,6 +17,7 @@ import { UserLoginComponent } from './utility-menu/utility-user/user-login/user-
 import { UserLogoutComponent } from './utility-menu/utility-user/user-logout/user-logout.component';
 import { EditNewsComponent } from './content-section/edit-news/edit-news.component';
 import { ReadMoreComponent } from './content-section/read-more/read-more.component';
+import { SearchTextPipe } from './search-text.pipe';
 
 const router = [
   {path: '', component: ContentSectionComponent},
@@ -38,7 +39,8 @@ const router = [
     UserLoginComponent,
     UserLogoutComponent,
     EditNewsComponent,
-    ReadMoreComponent
+    ReadMoreComponent,
+    SearchTextPipe
   ],
   imports: [
     BrowserModule,
