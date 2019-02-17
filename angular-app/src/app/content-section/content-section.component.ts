@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {cards} from '../mockData';
+import { CardContentService } from './card-content.service';
 
 @Component({
   selector: 'app-content-section',
@@ -8,12 +8,11 @@ import {cards} from '../mockData';
 })
 export class ContentSectionComponent implements OnInit {
 
-  public cards: any = null;
+  public cards: any = this.cardContent.cards;
 
-  constructor() { }
+  constructor(private cardContent: CardContentService) { }
 
   ngOnInit() {
-    this.cards = cards;
   }
 
   deleteArticle(e) {
