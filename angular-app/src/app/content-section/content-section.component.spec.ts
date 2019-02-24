@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import {SearchTextPipe} from '../search-text.pipe';
 
 import { ContentSectionComponent } from './content-section.component';
 
@@ -8,7 +11,9 @@ describe('ContentSectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContentSectionComponent ]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [RouterTestingModule],
+      declarations: [ ContentSectionComponent, SearchTextPipe ]
     })
     .compileComponents();
   }));

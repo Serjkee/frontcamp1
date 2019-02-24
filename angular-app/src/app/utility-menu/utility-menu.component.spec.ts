@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+
 
 import { UtilityMenuComponent } from './utility-menu.component';
 
@@ -8,6 +10,7 @@ describe('UtilityMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ UtilityMenuComponent ]
     })
     .compileComponents();

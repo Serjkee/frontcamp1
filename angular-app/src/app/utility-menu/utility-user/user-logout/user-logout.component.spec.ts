@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { UserLogoutComponent } from './user-logout.component';
 
@@ -8,6 +9,7 @@ describe('UserLogoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       declarations: [ UserLogoutComponent ]
     })
     .compileComponents();
